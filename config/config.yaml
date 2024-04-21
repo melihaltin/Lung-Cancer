@@ -1,0 +1,9 @@
+artifacts_root: artifacts
+
+# Path: Lung-Cancer/config/config.yaml
+
+data_ingestion:
+  data_source: https://www.kaggle.com/datasets/mysarahmadbhat/lung-cancer/download?datasetVersionNumber=1
+  root_dir: artifacts/data_ingestion
+  local_data_file : artifacts/data_ingestion/lung_cancer.zip
+  unzip_dir: artifacts/data_ingestion

@@ -1,7 +1,7 @@
 import os
 from box.exceptions import BoxValueError
 import yaml
-from Lung_Cancer import logger
+from Lung_Cancer.logging import logger
 import json
 import joblib
 from ensure import ensure_annotations
