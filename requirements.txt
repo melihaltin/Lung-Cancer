@@ -11,4 +11,5 @@ joblib
 types-pyYAML
 Flask
 flask-cors
+imblearn
 -e .
