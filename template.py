@@ -6,7 +6,7 @@ import logging
 logging.basicConfig(level=logging.INFO , format='[%(asctime)s]- %(name)s - %(levelname)s - %(message)s')
 
 # Project name
-PROJECT_NAME = 'Lung-Cancer'
+PROJECT_NAME = 'Lung_Cancer'
 
 list_of_files = [
     f"src/{PROJECT_NAME}/__init__.py",
@@ -18,6 +18,7 @@ list_of_files = [
     f"src/{PROJECT_NAME}/entity/__init__.py",
     f"src/{PROJECT_NAME}/entity/config_entity.py",
     f"src/{PROJECT_NAME}/constants/__init__.py",
+    f"src/{PROJECT_NAME}/logging/__init__.py",
 
     "config/config.yaml",
     "params.yaml",
