@@ -1,16 +1,18 @@
 from src.Lung_Cancer.logging import logger
 
-from src.Lung_Cancer.pipeline.stage_01_data_ingestion import DataIngestionTrainingPipeline
-from src.Lung_Cancer.pipeline.stage_02_data_validation import DataValidationPipeline
+from Lung_Cancer.pipeline.stage_01_data_ingestion import DataIngestionTrainingPipeline
+from Lung_Cancer.pipeline.stage_02_data_validation import DataValidationPipeline
+from Lung_Cancer.pipeline.stage_03_data_transformation import DataTransformationPipeline
 
 
 STAGE_NAME = "Data Ingestion"
 if __name__ == "__main__":
     try:
-        logger.info(f"Running {STAGE_NAME}")
+        logger.info(f">>>>>> stage {STAGE_NAME} started <<<<<<")
         pipeline = DataIngestionTrainingPipeline()
         pipeline.main()
-        logger.info(f"{STAGE_NAME} completed successfully")
+        logger.info(f">>>>>> stage {STAGE_NAME} completed <<<<<<\n\nx==========x")
+ 
     except Exception as e:
         logger.error(f"{STAGE_NAME} failed")
         logger.error(e)
@@ -27,4 +29,16 @@ try:
 except Exception as e:
         logger.exception(e)
         raise e    
+
+
+STAGE_NAME = "Data Transformation stage"
+
+try:
+    logger.info(f">>>>>> stage {STAGE_NAME} started <<<<<<")
+    pipeline = DataTransformationPipeline()
+    pipeline.run()
+    logger.info(f">>>>>> stage {STAGE_NAME} completed <<<<<<\n\nx==========x")
+except Exception as e:
+    logger.exception(e)
+    raise e
     

@@ -1,6 +1,6 @@
 from src.Lung_Cancer.constants import *  # noqa: F403
 from src.Lung_Cancer.utils.common import read_yaml , create_directories
-from src.Lung_Cancer.entity.config_entity import DataIngestionConfig, DataValidationConfig
+from src.Lung_Cancer.entity.config_entity import DataIngestionConfig, DataTransformationConfig, DataValidationConfig
 
 
 class ConfigurationManager:
@@ -45,3 +45,14 @@ class ConfigurationManager:
         )
 
         return data_validation_config    
+    
+    def get_data_transformation_config(self):
+        self.config = self.config.data_transformation
+        
+        create_directories([self.config.root_dir])
+        config = DataTransformationConfig(
+            root_dir = Path(self.config.root_dir),
+            data_file = Path(self.config.data_file),
+            transformed_data_file = Path(self.config.transformed_data_file)
+        )
+        return config
