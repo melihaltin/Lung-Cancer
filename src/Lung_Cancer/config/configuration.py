@@ -1,6 +1,6 @@
 from src.Lung_Cancer.constants import *  # noqa: F403
 from src.Lung_Cancer.utils.common import read_yaml , create_directories
-from src.Lung_Cancer.entity.config_entity import DataIngestionConfig, DataTransformationConfig, DataValidationConfig
+from src.Lung_Cancer.entity.config_entity import DataIngestionConfig, DataTransformationConfig, DataValidationConfig, ModelTrainingConfig
 
 
 class ConfigurationManager:
@@ -56,3 +56,13 @@ class ConfigurationManager:
             transformed_data_file = Path(self.config.transformed_data_file)
         )
         return config
+    
+    
+    def get_model_training_config(self):
+        self.config = self.config.model_training
+        
+        create_directories([self.config.root_dir])
+        return ModelTrainingConfig(
+            root_dir = Path(self.config.root_dir),
+            train_data = Path(self.config.train_data),
+        )

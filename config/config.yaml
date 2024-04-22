@@ -19,3 +19,8 @@ data_transformation:
   root_dir: artifacts/data_transformation
   data_file: artifacts/data_ingestion/survey lung cancer.csv
   transformed_data_file: artifacts/data_transformation/transformed_data.csv
+
+
+model_training:
+  root_dir: artifacts/model_training
+  train_data: artifacts/data_transformation/train.csv

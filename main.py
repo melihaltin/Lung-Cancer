@@ -3,6 +3,7 @@ from src.Lung_Cancer.logging import logger
 from Lung_Cancer.pipeline.stage_01_data_ingestion import DataIngestionTrainingPipeline
 from Lung_Cancer.pipeline.stage_02_data_validation import DataValidationPipeline
 from Lung_Cancer.pipeline.stage_03_data_transformation import DataTransformationPipeline
+from Lung_Cancer.pipeline.stage_04_model_training import ModelTrainingPipeline
 
 
 STAGE_NAME = "Data Ingestion"
@@ -36,6 +37,19 @@ STAGE_NAME = "Data Transformation stage"
 try:
     logger.info(f">>>>>> stage {STAGE_NAME} started <<<<<<")
     pipeline = DataTransformationPipeline()
+    pipeline.run()
+    logger.info(f">>>>>> stage {STAGE_NAME} completed <<<<<<\n\nx==========x")
+except Exception as e:
+    logger.exception(e)
+    raise e
+    
+    
+    
+STAGE_NAME = "Model Training stage"
+
+try:
+    logger.info(f">>>>>> stage {STAGE_NAME} started <<<<<<")
+    pipeline = ModelTrainingPipeline()
     pipeline.run()
     logger.info(f">>>>>> stage {STAGE_NAME} completed <<<<<<\n\nx==========x")
 except Exception as e:
