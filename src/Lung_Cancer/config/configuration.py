@@ -1,6 +1,6 @@
 from src.Lung_Cancer.constants import *  # noqa: F403
 from src.Lung_Cancer.utils.common import read_yaml , create_directories
-from src.Lung_Cancer.entity.config_entity import DataIngestionConfig, DataTransformationConfig, DataValidationConfig, ModelTrainingConfig
+from src.Lung_Cancer.entity.config_entity import DataIngestionConfig, DataTransformationConfig, DataValidationConfig, ModelEvaluationConfig, ModelTrainingConfig
 
 
 class ConfigurationManager:
@@ -66,3 +66,20 @@ class ConfigurationManager:
             root_dir = Path(self.config.root_dir),
             train_data = Path(self.config.train_data),
         )
+        
+    def get_model_evaluation_config(self) -> ModelEvaluationConfig:
+        config = self.config.model_evaluation
+        schema =  self.schema.TARGET_COLUMN
+
+        create_directories([config.root_dir])
+
+        model_evaluation_config = ModelEvaluationConfig(
+            root_dir=config.root_dir,
+            test_data_path=config.test_data_path,
+            model_path = config.model_path,
+            metric_file_name = config.metric_file_name,
+            target_column = "LUNG_CANCER"
+           
+        )
+
+        return model_evaluation_config
